@@ -1,0 +1,91 @@
+/* Suaviza a rolagem da página */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Efeito de transição suave em todos os cards e botões */
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Sombra e elevação refinada nos cards de produtos */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -6px rgba(194, 57, 57, 0.1), 0 8px 12px -6px rgba(206, 27, 27, 0.05);
+}
+
+/* Esconde a barra de rolagem (categorias e miniaturas) */
+.scrollbar-none {
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+
+/* Mantém todos os cartões de categoria no mesmo tamanho */
+.category-item {
+    box-sizing: border-box;
+    flex: 0 0 120px;
+    width: 120px;
+    height: 126px;
+}
+
+.category-item > span {
+    display: flex;
+    min-height: 2rem;
+    align-items: center;
+    justify-content: center;
+    line-height: 1rem;
+}
+
+/* Configuração básica e Logo de Fundo */
+body {
+    background-color: #508197;
+    color: #333;
+    font-family: "Oswald", sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('img/logo.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.04;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Botão "Adicionar" desativado durante o feedback */
+.add-btn:disabled {
+    background-color: #16a34a;
+    cursor: default;
+}
+
+/* Área da foto principal dos produtos */
+.product-card .h-44 {
+    height: auto;
+    aspect-ratio: 1 / 1;      /* área quadrada, igual para todos os cards */
+    padding: 14px;            /* espaço entre a foto e a borda do card */
+    background-color: #f8fafa;
+}
+
+.product-card .h-44 img {
+    object-fit: cover;      /* mostra a foto inteira, sem cortar */
+    border-radius: 10px;
+}
+
+/* Mais respiro entre os cards e dentro da vitrine */
+.product-card {
+    padding: 4px;
+}

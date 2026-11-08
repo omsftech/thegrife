@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Grife - Camisetas, shorts, bonés e conjuntos. Envio para todo o Brasil.">
+    <title>The Grife - Catálogo Online</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Topo / Cabeçalho -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col items-center gap-2">
+
+            <!-- Logo + Nome -->
+            <a href="#" class="flex items-center justify-center gap-4">
+                <img src="img/logo.jpg" alt="Logo The Grife" class="h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover border-2 border-white">
+                <h1 class="text-4xl sm:text-5xl font-bold tracking-wide uppercase">The Grife</h1>
+            </a>
+
+            <div class="w-full flex items-center justify-end gap-2">
+                <!-- WhatsApp (o link é montado no script.js com o número da constante PHONE) -->
+                <a id="contactLink" href="https://wa.me/5513997059091?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20d%C3%BAvidas." target="_blank" rel="noopener" class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span class="hidden sm:inline">Fale Conosco</span>
+                </a>
+
+                <!-- Botão do Carrinho -->
+                <button onclick="toggleCart()" class="relative bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg transition cursor-pointer" aria-label="Abrir carrinho">
+                    <i class="fa-solid fa-cart-shopping text-lg"></i>
+                    <span id="cartBadge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Aviso de envio -->
+    <section class="bg-white border-b border-gray-200 text-amber-900 py-3 px-4 text-center text-sm font-medium">
+        <i class="fa-solid fa-circle-info mr-1"></i> Envio para Todo o Brasil 🚀
+    </section>
+
+    <!-- Conteúdo Principal (pb-28 evita que a barra do carrinho cubra o conteúdo) -->
+    <main class="max-w-6xl mx-auto px-4 py-6 pb-28">
+
+        <!-- Categorias
+             O data-category de cada botão precisa ser igual ao "cat" do produto no script.js:
+             camisetas, bermudas, bermudasjeans, bones, camisetaspremium, camisetasoversized -->
+        <section class="mb-8">
+            <h2 class="text-lg font-bold text-slate-800 mb-4 border-l-4 border-slate-900 pl-2">Categorias</h2>
+
+            <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-none">
+                <div class="category-item bg-white p-3 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition cursor-pointer min-w-[90px] shrink-0 text-center" data-category="todos">
+                    <div class="w-14 h-14 mx-auto rounded-full mb-2 overflow-hidden border-2 border-slate-900 flex items-center justify-center bg-slate-900 text-white">
+                        <i class="fa-solid fa-list text-xl"></i>
+                    </div>
+                    <span class="text-xs font-semibold">Ver Todos</span>
+                </div>
+
+                <div class="category-item bg-white p-3 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition cursor-pointer min-w-[90px] shrink-0 text-center" data-category="camisetas">
+                    <div class="w-14 h-14 mx-auto rounded-full mb-2 overflow-hidden border-2 border-transparent">
+                        <img src="img/camisajor.webp" alt="Camisetas Básicas" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-semibold">Camisetas Básicas</span>
+                </div>
+
+                <div class="category-item bg-white p-3 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition cursor-pointer min-w-[90px] shrink-0 text-center" data-category="bermudas">
+                    <div class="w-14 h-14 mx-auto rounded-full mb-2 overflow-hidden border-2 border-transparent">
+                        <img src="img/boss.webp" alt="Shorts Elastano" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-semibold">Shorts Elastano</span>
+                </div>
+
+                <div class="category-item bg-white p-3 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition cursor-pointer min-w-[90px] shrink-0 text-center" data-category="bones">
+                    <div class="w-14 h-14 mx-auto rounded-full mb-2 overflow-hidden border-2 border-transparent">
+                        <img src="img/bonebigcr.webp" alt="Bonés" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-semibold">Bonés</span>
+                </div>
+
+                <div class="category-item bg-white p-3 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition cursor-pointer min-w-[90px] shrink-0 text-center" data-category="camisetaspremium">
+                    <div class="w-14 h-14 mx-auto rounded-full mb-2 overflow-hidden border-2 border-transparent">
+                        <img src="img/camisetachampions.webp" alt="Camisetas Premium" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-semibold">Camisetas Premium</span>
+                </div>
+
+                <div class="category-item bg-white p-3 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition cursor-pointer min-w-[90px] shrink-0 text-center" data-category="camisetasoversized">
+                    <div class="w-14 h-14 mx-auto rounded-full mb-2 overflow-hidden border-2 border-transparent">
+                        <img src="img/camisetaaeroo.webp" alt="Camisetas Oversized" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-semibold">Camisetas Oversized</span>
+                </div>
+
+                <div class="category-item bg-white p-3 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition cursor-pointer min-w-[90px] shrink-0 text-center" data-category="bermudasjeans">
+                    <div class="w-14 h-14 mx-auto rounded-full mb-2 overflow-hidden border-2 border-transparent">
+                        <img src="img/bermudajecapa.JPG" alt="Bermudas Jeans" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-semibold">Bermudas Jeans</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vitrine de Produtos -->
+        <section>
+            <h2 class="text-lg font-bold text-slate-800 mb-4 border-l-4 border-slate-900 pl-2">Produtos em Destaque</h2>
+
+            <!--
+                Os cards são gerados pelo script.js a partir da lista PRODUTOS.
+                Para editar nome, preço, fotos, cores (campo "cores") ou tamanhos, mexa lá.
+                Ao clicar em um produto abre a janela com a foto grande e a escolha de cor e tamanho.
+            -->
+            <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
+        </section>
+
+    </main>
+
+    <!-- Barra Flutuante do Carrinho -->
+    <div id="cartBar" class="fixed bottom-0 left-0 right-0 bg-slate-900 text-white p-4 shadow-lg transform translate-y-full transition-all duration-300 flex justify-between items-center max-w-md mx-auto rounded-t-2xl z-50">
+        <div>
+            <p class="text-xs text-gray-400">Seu Pedido</p>
+            <p id="cartCount" class="text-sm font-bold">0 item(ns)</p>
+        </div>
+        <button onclick="toggleCart()" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-cart-shopping text-lg"></i> Ver Carrinho
+        </button>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-slate-900 text-gray-400 text-center py-6 pb-28 mt-12 text-sm border-t border-slate-800">
+        <p class="font-semibold text-white">LOJA THE GRIFE</p>
+        <p class="mt-1">PARIQUERA-AÇU/SP</p>
+        <div class="mt-5">
+            <p class="font-semibold text-white">Formas de pagamento</p>
+            <div class="mt-3 flex flex-wrap items-center justify-center gap-3" aria-label="Formas de pagamento aceitas: Visa, Mastercard, Elo, Pix e boleto">
+                <span class="flex h-12 w-20 items-center justify-center rounded-md bg-white p-2">
+                    <img src="https://cdn.simpleicons.org/visa/1A1F71" alt="Visa" class="max-h-full max-w-full">
+                </span>
+                <span class="flex h-12 w-20 items-center justify-center rounded-md bg-white p-2">
+                    <img src="https://cdn.simpleicons.org/mastercard/EB001B" alt="Mastercard" class="max-h-full max-w-full">
+                </span>
+                <span class="flex h-12 w-20 items-center justify-center rounded-md bg-white">
+                    <span class="text-2xl font-black italic tracking-tight text-sky-600" aria-label="Elo">elo</span>
+                </span>
+                <span class="flex h-12 w-20 items-center justify-center rounded-md bg-white p-2">
+                    <img src="https://cdn.simpleicons.org/pix/32BCAD" alt="Pix" class="max-h-full max-w-full">
+                </span>
+                <span class="flex h-12 w-20 flex-col items-center justify-center rounded-md bg-white text-slate-800">
+                    <i class="fa-solid fa-barcode text-lg" aria-hidden="true"></i>
+                    <span class="text-[10px] font-bold">BOLETO</span>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fundo escuro do carrinho -->
+    <div id="cartOverlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 z-[60] hidden"></div>
+
+    <!-- Painel lateral do carrinho -->
+    <aside id="cartPanel" class="fixed top-0 right-0 h-full w-full max-w-sm bg-white z-[70] shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="flex items-center justify-between p-4 border-b">
+            <h2 class="text-lg font-bold text-slate-900">Seu Carrinho</h2>
+            <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-800 text-xl cursor-pointer" aria-label="Fechar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+
+        <div class="p-4 border-t">
+            <div class="flex justify-between mb-3 font-bold text-slate-900">
+                <span>Total</span>
+                <span id="cartTotal">R$ 0,00</span>
+            </div>
+            <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Pedido
+            </button>
+        </div>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>
